@@ -1,0 +1,22 @@
+
+.add_label{
+    cursor: pointer;
+    
+}
+.add_button_real{
+    visibility: hidden;
+}
+div{
+    display: block;
+}
+
+.item_view{
+    width: 100%;
+    height: 70vh;
+    margin: 0 auto;
+}
+.card{
+    margin-top: 15px;
+    height: 150px;
+    width: 150px;
+}
