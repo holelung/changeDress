@@ -20,3 +20,12 @@ div{
     height: 150px;
     width: 150px;
 }
+
+.clothes__item{
+    display: none;
+}
+.clothes__item.target{
+    display: block;
+}
+
+

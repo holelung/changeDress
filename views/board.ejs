@@ -32,19 +32,19 @@
                     </ul>
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="게시판 검색" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">search</button>
+                        <button class="btn btn-outline-succes   s" type="submit">search</button>
                     </form>
                 </div>
             </div>
         </nav>
 
         <div class="board_listwrap">
-            <table class="board_list table">
+            <table class="board_list table table-striped">
                 <colgroup>
                     <col style="width: 7%;">
                     <col>
                     <col style="width: 18%;">
-                    <col style="width: 6%;">
+                    <col style="width: 8%;">
                     <col style="width: 6%;">
                     <col style="width: 6%;">
                 </colgroup>
@@ -59,32 +59,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="table-active">
-                        <th scope="row">1</th>
-                        <td>test script</td>
-                        <td>test</td>
-                        <td>2021</td>
-                        <td>3</td>
-                        <td>0</td>
-                    </tr>
-                    <tr class="table-active">
-                        <th scope="row">2</th>
-                        <td>test script2</td>
-                        <td>test2</td>
-                        <td>2021</td>
-                        <td>31</td>
-                        <td>0</td>
-                    </tr>
-                    <tr class="table-active">
-                        <th scope="row">3</th>
-                        <td>test script3</td>
-                        <td>test3</td>
-                        <td>2021</td>
-                        <td>3333</td>
-                        <td>3</td>
-                    </tr>
+                    <% board.forEach(board=>{ %>
+                        <tr class="table-active">
+                            <th scope="row"><%= board.id %></th>
+                            <td><a href="/board/view/<%= board.id %>"><%= board.title %></a></td>
+                            <td><%= board.writer %></td>
+                            <td><%= moment(board.date).format("YYYY-MM-DD") %></td>
+                            <td><%= board.views %></td>
+                            <td><%= board.likeCount %></td>
+                        </tr>
+                    <% }) %>
                 </tbody>
             </table>
+
+            <div class="board_controller text-end">
+                <a class="btn btn-primary " href="/write">글쓰기</a>
+            </div>
         </div>
 
 
