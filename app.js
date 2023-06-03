@@ -7,8 +7,16 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var eventRouter = require('./routes/event');
 
 var app = express();
+
+//cookie랑 ip 가져오기
+app.use(cookieParser());
+function getUserIP(req) {
+    const addr = req.headers['x-forwarded-for'] || req.connection.remoteAddress
+    return addr
+}
 
 var mysql=require("mysql2/promise");
 async function getConnection(){
@@ -30,16 +38,16 @@ const options = {
 	port: 3306,
 	user: 'root',
 	password: '335276',
-	database: 'changdress'
+	database: 'changedress'
 };
 const sessionStore = new MySQLStore(options);
 
 app.use(session({
-	key: 'loginkey',
-	secret: 'itc801#',
+	key: 'thisIsKey',
+	secret: 'changdress#',
 	store: sessionStore,
 	resave: false,
-	saveUninitialized: false
+	saveUninitialized: true
 }));
 
 // view engine setup
@@ -55,6 +63,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/event', eventRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -71,5 +80,6 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
 
 module.exports = app;
