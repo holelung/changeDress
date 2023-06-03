@@ -21,7 +21,7 @@ var upload = multer({storage: storage});
 //게시판 용
 var storageB = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "public/images/board");
+    cb(null, "public/images/board/");
   },
   filename: function (req, file, cb) {
     const ext = path.extname(file.originalname);
@@ -117,7 +117,7 @@ router.get('/write', function(req, res){
 
 router.post('/api/write', uploadB.single("image"),async function(req,res,rows){
   await connection.query("insert into board(title, content, imageFile) values(?,?,?)",
-    [req.body.title, req.body.content, `/images/${req.file.filename}`])
+    [req.body.title, req.body.content, `/images/board/${req.file.filename}`])
 
   console.log(req.body)
   res.redirect('/board')

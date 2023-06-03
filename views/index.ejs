@@ -98,7 +98,7 @@
                         <div id="tab1" class="clothes__item target d-flex flex-wrap justify-content-around p-2">
                                 <% images.forEach(images=>{ %>
                                 <div class="card border-primary">
-                                    <img onclick="click_item()" data-value="<%= row %>" id="custom_img"class="card-img-top" src="<%= images.img %>" alt="Title">
+                                    <img onclick="click_item(`<%= images.img %>`)" data-value="<%= row %>" id="custom_img" class="card-img-top" src="<%= images.img %>" alt="Title">
                                 </div>
                                 <% }) %>
                             </div>

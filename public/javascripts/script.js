@@ -16,11 +16,14 @@ function img_change(id, index){
     parts_img.src = `${index}`
 }
 
-function click_item(){
+function click_item(id){
     var customImg = document.querySelector("#custom_img");
     var imgSrc = customImg.src;
     var imgvalue = customImg.dataset.value;
-    console.log( imgvalue)
+    console.log(imgvalue)
     console.log(imgSrc)
-    img_change(imgvalue, imgSrc);
+    console.log(id)
+    var img = id
+
+    img_change(imgvalue, img);
 }
