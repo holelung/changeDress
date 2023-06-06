@@ -62,35 +62,18 @@
                         <div><%= boardView.content %></div>
                     </div>
                 </div>
-            <% }) %>
+           
         </section>
     </main>
     <footer class="m-5 px-5">
         <div class="utils d-md-flex justify-content-md-end">
-            <button class="like_btn btn btn-light border border-primary mx-2">좋아요</button>
+            <a class="like_btn btn btn-light border border-primary mx-2" href="/api/view/<%= boardView.id %>" >좋아요</a>
+            <% }) %>
             <a class="btn btn-secondary" href="/board">목록</a>
         </div>
     </footer>
 
-    
-    <script>
-        const queryButton = document.getElementById('like_btn');
-        queryButton.addEventListener('click', () => {
-            fetch('/increase-query-count/<%= boardView.id %>',{
-                method: 'POST',
-            })
-                .then(response => {
-                    if (response.ok) {
-                        console.log('Query 증가 요청 성공');
-                    } else {
-                        console.log('Query 증가 요청 실패');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-        });
-    </script>
 
+    <script src="/javascripts/script.js"></script>
 </body>
 </html>

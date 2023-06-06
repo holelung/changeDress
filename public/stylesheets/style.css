@@ -13,6 +13,7 @@ div{
 .item_view{
     width: 100%;
     margin: 0 auto;
+    overflow: auto;
 }
 .card{
     margin-top: 15px;

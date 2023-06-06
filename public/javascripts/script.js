@@ -25,5 +25,37 @@ function click_item(id){
     console.log(id)
     var img = id
 
+    setCookie(imgvalue, img, 1);
     img_change(imgvalue, img);
 }
+
+//쿠키 설정
+function setCookie(cookie_name, value, days) {
+  var exdate = new Date();
+  exdate.setDate(exdate.getDate() + days);
+
+  var cookie_value = escape(value) + ((days == null) ? '': ';expires=' + exdate.toUTCString())
+  document.cookie = cookie_name + '=' + cookie_value;
+}
+
+function getCookie(cookie_name){
+  var x, y;
+  var val = document.cookie.split(';');
+
+  for(var i = 0; i< val.length; i++){
+    x= val[i].substr(0,val[i].indexOf('='));
+    y= val[i].substr(val[i].indexOf('=')+1);
+    x = x.replace(/^\s+|\s+$/g, ''); // 앞과 뒤의 공백 제거하기
+    if (x== cookie_name){
+      return unescape(y);
+    }
+  }
+}
+
+window.onload = function(){
+  img_change("hair",getCookie("hair"));
+  img_change("clothes",getCookie("clothes"));
+  img_change("accessory",getCookie("accessory"));
+  img_change("glass",getCookie("glass"));
+}
+

@@ -133,6 +133,16 @@ router.get('/board/view/:id', async function(req,res,rows){
   res.render('board_view', {boardView: boardView})
 })
 
+//좋아요 버튼
+router.get('/api/view/:id', async function(req,res,rows) {
+
+  console.log(req.body); 
+  var [boardView] = await connection.query("select * from board where id=?",[req.params.id])
+  await connection.query("update board set likeCount = likeCount+1 where id=?",[req.params.id])
+
+  res.render('board_view', {boardView: boardView});
+})
+
 
 
 
