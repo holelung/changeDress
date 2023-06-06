@@ -4,7 +4,7 @@ var multer = require('multer');
 var path = require('path');
 var EventEmitter = require('events');
 var eventEmitter = new EventEmitter();
-
+var cookieParser = require('cookie-parser');
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -128,20 +128,20 @@ router.get('/board/view/:id', async function(req,res,rows){
   //조회수 증가
   await connection.query("update board set views = views+1 where id=?",[req.params.id])
   
+  /* var id = boardView.id
+  var title = boardView.title
+  res.cookie({id}, {title}, {
+    expires: new Date(Date.now() + 900000),
+    httpOnly: true,ßß
+    secure: true
+  }); */
 
   console.log(boardView)
   res.render('board_view', {boardView: boardView})
 })
 
 //좋아요 버튼
-router.get('/api/view/:id', async function(req,res,rows) {
 
-  console.log(req.body); 
-  var [boardView] = await connection.query("select * from board where id=?",[req.params.id])
-  await connection.query("update board set likeCount = likeCount+1 where id=?",[req.params.id])
-
-  res.render('board_view', {boardView: boardView});
-})
 
 
 

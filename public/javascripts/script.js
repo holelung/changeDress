@@ -1,3 +1,14 @@
+
+window.onload = function(){
+  img_change("hair",getCookie("hair"));
+  img_change("clothes",getCookie("clothes"));
+  img_change("accessory",getCookie("accessory"));
+  img_change("glass",getCookie("glass"));
+}
+
+
+
+
 //아이템 추가 공백란 방지
 document.getElementById('add_item_form').addEventListener('submit', function(event) {
   var imgInput = document.getElementsByName('img')[0];
@@ -52,10 +63,21 @@ function getCookie(cookie_name){
   }
 }
 
-window.onload = function(){
-  img_change("hair",getCookie("hair"));
-  img_change("clothes",getCookie("clothes"));
-  img_change("accessory",getCookie("accessory"));
-  img_change("glass",getCookie("glass"));
+//파일 다운로드
+function printChara(div){
+  div = div[0]
+  html2canvas(div).then(function(canvas){
+    var myCharacter = cnavas.toDataURL();
+    downloadURI(myCharacter, 'myCharacter.png')
+  });
 }
+
+function downloadURI(uri, name){
+  var link = document.createElement("a")
+  link.download = name;
+  link.href = uri;
+  document.body.appendChild(link);
+  link.click();
+}
+
 
