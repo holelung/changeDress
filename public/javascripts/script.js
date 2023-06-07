@@ -1,4 +1,5 @@
 
+
 window.onload = function(){
   img_change("hair",getCookie("hair"));
   img_change("clothes",getCookie("clothes"));
@@ -64,11 +65,30 @@ function getCookie(cookie_name){
 }
 
 //파일 다운로드
-function printChara(div){
-  div = div[0]
+document.querySelector(".download-btn").addEventListener("click",function (){
+  html2canvas(document.querySelector("#capture")).then(canvas => {
+    
+    saveAs(canvas.toDataURL("image/png"), "card.png")
+  })
+})
+function saveAs(uri, filename){
+  var link = document.createElement("a");
+  
+    link.href = uri;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+
+
+/* function printChara(div){
   html2canvas(div).then(function(canvas){
-    var myCharacter = cnavas.toDataURL();
-    downloadURI(myCharacter, 'myCharacter.png')
+    div.appendChild(canvas);
+
+     var myCharacter = canvas.toDataURL();
+    downloadURI(myCharacter, 'myCharacter.png') 
   });
 }
 
@@ -81,3 +101,4 @@ function downloadURI(uri, name){
 }
 
 
+ */

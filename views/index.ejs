@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="js/html2canvas.min.js" defer></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
         crossorigin="anonymous"></script>
@@ -48,13 +48,14 @@
                 <div class="d-flex flex-column">
                     <div class="character_area m-5" id="capture">
                         <img data-value="hair" class="chara_hair chara-parts" src="" alt="">
-                        <img data-value="accessory" class="chara_accessory chara-parts" src="" alt="">
+                        
                         <img data-value="glass" class="chara_glass chara-parts" src="" alt="">
                         <img data-value="clothes" class="chara_clothes chara-parts" src="" alt="">
+                        <img data-value="accessory" class="chara_accessory chara-parts" src="" alt="">
                         <img class="chara_base" src="/images/skinhead.png" alt="베이스">
                     </div>
                     <div class="character_footer mx-5 text-center">
-                        <button class="btn btn-primary download-btn" onclick="printChara($('#capture'))"><span>저장</span></button>
+                        <button class="btn btn-primary download-btn"><span>저장</span></button>
                         <button class="btn btn-success">공유</button>
                     </div>
                 </div>
