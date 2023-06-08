@@ -1,5 +1,5 @@
 
-
+//캐릭터에 입히기
 window.onload = function(){
   img_change("hair",getCookie("hair"));
   img_change("clothes",getCookie("clothes"));
